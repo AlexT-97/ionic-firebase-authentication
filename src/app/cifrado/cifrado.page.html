@@ -1,5 +1,6 @@
 <!-- <ion-button type="submit" (click)="authService.SignOut()" expand="block"
   >Salir de sesión</ion-button> -->
+  
   <ion-header>
     <ion-toolbar>
       <ion-buttons slot="start">
@@ -12,14 +13,19 @@
   <ion-content>
     <ion-item lines="full">
       <ion-label position="floating">Tamaño:</ion-label>
-    <ion-input type="number" [(ngModel)]="tamanio"></ion-input>
+    <ion-input type="number" [(ngModel)]="tamanio" (ionChange)="validateSize()"></ion-input>
     </ion-item>
-
+    <ion-item *ngIf="errorMessage">
+      <ion-label color="danger">{{ errorMessage }}</ion-label>
+    </ion-item>
     <ion-item lines="full">
       <ion-label position="floating">Permutación:</ion-label>
-    <ion-input type="number" [(ngModel)]="permutacion"></ion-input>
+    <ion-input type="number" [(ngModel)]="permutacion" (ionChange)="validatePermutacion()"></ion-input>
     </ion-item>
-
+    <ion-item *ngIf="errorMessage">
+      <ion-label color="danger">{{ errorMessage }}</ion-label>
+    </ion-item>
+    
     <ion-item lines="full">
       <ion-label position="floating">Sustitución:</ion-label>
     <ion-input type="number" [(ngModel)]="sustitucion"></ion-input>
@@ -27,7 +33,10 @@
 
     <ion-item lines="full">
       <ion-label position="floating">Rondas:</ion-label>
-    <ion-input type="number" [(ngModel)]="modulo"></ion-input>
+    <ion-input type="number" [(ngModel)]="modulo" (ionChange)="validateRondas()"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="errorMessage">
+      <ion-label color="danger">{{ errorMessage }}</ion-label>
     </ion-item>
 
     <ion-row>

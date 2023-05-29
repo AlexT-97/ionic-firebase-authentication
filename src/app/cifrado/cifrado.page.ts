@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-
 import * as CryptoJS from 'crypto-js';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-cifrado',
   templateUrl: './cifrado.page.html',
   styleUrls: ['./cifrado.page.scss'],
 })
 export class CifradoPage implements OnInit {
+  
   tamanio: number;
   permutacion: string;
   sustitucion: string;
@@ -15,8 +17,32 @@ export class CifradoPage implements OnInit {
   plaintext: string;
   ciphertext: string;
   key: string;
-  
+  errorMessage: string;
   constructor() { }
+  validateSize() {
+    if (this.tamanio % 2 !== 0) {
+      this.errorMessage = 'El tamaño debe ser un número par.';
+    } else {
+      this.errorMessage = '';
+    }
+  }
+  validateRondas() {
+    if (this.modulo < 1 || this.modulo > 16) {
+      this.errorMessage = 'El número de rondas debe estar entre 1 y 16.';
+    } else {
+      this.errorMessage = '';
+    }
+  }
+  validatePermutacion() {
+    const digits = String(this.permutacion).split('');
+    const uniqueDigits = [...new Set(digits)];
+
+    if (digits.length !== uniqueDigits.length) {
+      this.errorMessage = 'La permutación no puede contener dígitos repetidos.';
+    } else {
+      this.errorMessage = '';
+    }
+  }
   cifrar() {
     // Convertir la clave a bytes
     const claveBytes = CryptoJS.enc.Utf8.parse(this.permutacion);
