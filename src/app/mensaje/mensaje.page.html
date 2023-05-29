@@ -16,8 +16,8 @@
 
   <ion-item lines="full">
     <ion-label position="floating">Clave:</ion-label>
-  <ion-input type="password" placeholder="Ingresa llave de encripción" [(ngModel)]="encPass"
-  ></ion-input>
+  <ion-input type="{{ showPassword ? 'text' : 'password' }}" [(ngModel)]="encPass" required placeholder="Ingresa llave de encripción"></ion-input>
+    <ion-icon name="{{ showPassword ? 'eye-off' : 'eye' }}" (click)="togglePasswordVisibility()"></ion-icon>
   </ion-item>
 
   <ion-item lines="full">
@@ -29,15 +29,20 @@
       <ion-button (click)="convertirTexto('encriptar')">Cifrar</ion-button>
     </ion-col>
   </ion-row>
-  <ion-title>Decifrar</ion-title>
+  <ion-row>
+    <ion-col>
+      <ion-title>Decifrar</ion-title>
+    </ion-col>
+  </ion-row>
+  
   <ion-item lines="full">
     <ion-label position="floating">Texto a decifrar:</ion-label>
   <ion-input type="text" placeholder="Ingresa texto a decifrar" [(ngModel)]="destexto"></ion-input>
   </ion-item>
   <ion-item lines="full">
     <ion-label position="floating">Clave:</ion-label>
-  <ion-input type="password" placeholder="Ingresa llave de decripción" [(ngModel)]="desPass"
-  ></ion-input>
+  <ion-input type="{{ showPassword ? 'text' : 'password' }}" [(ngModel)]="desPass" required placeholder="Ingresa llave de decripción"></ion-input>
+    <ion-icon name="{{ showPassword ? 'eye-off' : 'eye' }}" (click)="togglePasswordVisibility()"></ion-icon>
   </ion-item>
 
   <ion-item lines="full">

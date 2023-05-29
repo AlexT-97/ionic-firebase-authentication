@@ -25,5 +25,10 @@ export class MensajePage implements OnInit {
 
   ngOnInit() {
   }
+  showPassword: boolean = false;
+
+togglePasswordVisibility() {
+  this.showPassword = !this.showPassword;
+}
 
 }
