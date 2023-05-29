@@ -30,4 +30,9 @@ export class LoginPage implements OnInit {
         window.alert(error.message);
       });
   }
+  showPassword: boolean = false;
+
+togglePasswordVisibility() {
+  this.showPassword = !this.showPassword;
+}
 }

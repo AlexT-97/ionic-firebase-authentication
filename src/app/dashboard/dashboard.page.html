@@ -1,3 +1,26 @@
 <ion-button type="submit" (click)="authService.SignOut()" expand="block"
-  >Logout</ion-button
->
+  >Salir de sesión
+</ion-button>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>👽Seguridad de redes👽</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="auth-form">
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-align-self-center">
+        <img src="../assets/imagenes/logo.png">
+        <ion-button
+          [routerLink]="['/cifrado']"
+          expand="block"
+          color="primary"
+          >Generar Key</ion-button>
+        <ion-button [routerLink]="['/mensaje']" expand="block" color="danger"
+          >Cifrar - Decifrar</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

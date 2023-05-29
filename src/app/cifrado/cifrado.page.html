@@ -1,0 +1,61 @@
+<!-- <ion-button type="submit" (click)="authService.SignOut()" expand="block"
+  >Salir de sesión</ion-button> -->
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Generar key</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-item lines="full">
+      <ion-label position="floating">Tamaño:</ion-label>
+    <ion-input type="number" [(ngModel)]="tamanio"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Permutación:</ion-label>
+    <ion-input type="number" [(ngModel)]="permutacion"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Sustitución:</ion-label>
+    <ion-input type="number" [(ngModel)]="sustitucion"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Rondas:</ion-label>
+    <ion-input type="number" [(ngModel)]="modulo"></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="cifrar()"  expand="block"
+          >Key</ion-button>
+      </ion-col>
+    </ion-row>
+  
+    <ion-item *ngIf="cifrado">
+      <ion-label position="floating">Key:</ion-label>  
+      <ion-input type="text" [value]="cifrado"></ion-input>
+      </ion-item>
+  
+  </ion-content>
+  <ion-content>
+    
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="cifrar()"  expand="block"
+          >Cargar</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" [routerLink]="['/mensaje']"  expand="block"
+          >Cifrar-decifrar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-content>
+  

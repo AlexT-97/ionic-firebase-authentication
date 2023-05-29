@@ -3,26 +3,30 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Sign in User</ion-title>
+    <ion-title>Iniciar sesión</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-item lines="full">
-    <ion-label position="floating">Email</ion-label>
+    <ion-label position="floating">Correo electrónico</ion-label>
     <ion-input type="text" #email required></ion-input>
   </ion-item>
 
   <ion-item lines="full">
-    <ion-label position="floating">Password</ion-label>
-    <ion-input type="password" #password required></ion-input>
+    <ion-label position="floating">Contraseña</ion-label>
+    <!--<ion-input type="password" #password required></ion-input>-->
+    <ion-input type="{{ showPassword ? 'text' : 'password' }}" #password required placeholder="Contraseña"></ion-input>
+    <ion-icon name="{{ showPassword ? 'eye-off' : 'eye' }}" (click)="togglePasswordVisibility()"></ion-icon>
   </ion-item>
 
   <ion-row>
     <ion-col>
       <ion-button type="submit" (click)="logIn(email, password)" expand="block"
-        >Login</ion-button
+        >Iniciar sesión</ion-button
       >
+      
+
     </ion-col>
   </ion-row>
 
@@ -33,7 +37,7 @@
         color="warning"
         [routerLink]="['/password-reset']"
       >
-        Password Reset
+        Resetear contraseña
       </ion-button>
     </ion-col>
   </ion-row>
@@ -46,7 +50,7 @@
         (click)="authService.GoogleAuth()"
         expand="block"
       >
-        Login with Google
+        Iniciar sesión con Google
       </ion-button>
     </ion-col>
   </ion-row>

@@ -1,0 +1,61 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cifrar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item lines="full">
+    <ion-label position="floating">Texto a cifrar:</ion-label>
+  <ion-input type="text" placeholder="Ingresa texto a criptar" [(ngModel)]="enctexto"></ion-input>
+  </ion-item>
+
+  <ion-item lines="full">
+    <ion-label position="floating">Clave:</ion-label>
+  <ion-input type="password" placeholder="Ingresa llave de encripción" [(ngModel)]="encPass"
+  ></ion-input>
+  </ion-item>
+
+  <ion-item lines="full">
+    <textarea autoGrow="true" readonly rows="3">{{textoEncriptado}}</textarea>
+  </ion-item>
+
+  <ion-row>
+    <ion-col>
+      <ion-button (click)="convertirTexto('encriptar')">Cifrar</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-title>Decifrar</ion-title>
+  <ion-item lines="full">
+    <ion-label position="floating">Texto a decifrar:</ion-label>
+  <ion-input type="text" placeholder="Ingresa texto a decifrar" [(ngModel)]="destexto"></ion-input>
+  </ion-item>
+  <ion-item lines="full">
+    <ion-label position="floating">Clave:</ion-label>
+  <ion-input type="password" placeholder="Ingresa llave de decripción" [(ngModel)]="desPass"
+  ></ion-input>
+  </ion-item>
+
+  <ion-item lines="full">
+    <textarea autoGrow="true" readonly rows="3">{{textoDesencriptado}}</textarea>
+  </ion-item>
+
+  <ion-row>
+    <ion-col>
+      <ion-button (click)="convertirTexto('desencriptar')">Decifrar</ion-button>
+    </ion-col>
+  </ion-row>
+  
+  <ion-row>
+    <ion-col>
+      <ion-button type="submit" [routerLink]="['/cifrado']"  expand="block"
+        >Generar Key</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-button type="submit" (click)="authService.SignOut()" expand="block"
+  >Salir de sesión</ion-button>
+</ion-content>

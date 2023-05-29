@@ -26,4 +26,9 @@ export class RegistrationPage implements OnInit {
         window.alert(error.message);
       });
   }
+  showPassword: boolean = false;
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
 }
